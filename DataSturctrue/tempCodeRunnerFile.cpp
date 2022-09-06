@@ -1,2 +1,0 @@
-tree.InOrder();
-    // tree.PostOrder();
