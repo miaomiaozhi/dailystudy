@@ -8,16 +8,26 @@ struct DSU {
         while (x != f[x]) x = f[x] = f[f[x]];
         return x;
     }
-    int operator [](int x) { return find(x); }
-    int same(int a, int b) { return find(a) == find(b); }
+    int operator[](int x) {
+        return find(x);
+    }
+    int same(int a, int b) {
+        return find(a) == find(b);
+    }
     bool merge(int a, int b) {
         a = find(a), b = find(b);
-        if (a == b) return false;
+        if (a == b) {
+            return false;
+        }
         components--;
         siz[b] += siz[a];
         f[a] = b;
         return true;
     }
-    int size(int x) { return siz[find(x)]; }
-    int count() { return components; }
+    int size(int x) {
+        return siz[find(x)];
+    }
+    int count() {
+        return components;
+    }
 };

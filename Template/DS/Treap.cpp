@@ -15,6 +15,7 @@ struct Treap {
     vector <int> a;
 
     Treap() : n(0), ptr(0), root(0), a(0) {
+        tr.reserve((int) 1E6);
         tr.push_back({0, 0, 0, 0, 0});
     }
     Treap(int _n) : n(_n), ptr(0), tr(_n + 5), a(_n + 5), root(0) {}

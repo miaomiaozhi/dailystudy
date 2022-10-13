@@ -9,7 +9,7 @@ struct SAM {
     
     int tot, last;
     SAM() : tot(1), last(1) {}
-
+    
     void extend(int c) {
         int p = last, now = last = ++tot;
         t[now].len = t[p].len + 1;
