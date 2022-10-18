@@ -17,13 +17,16 @@ struct PersistentSegTree {
         return (int) tr.size() - 1;
     }
     void pushup(int u) {
+        // @TODO: merge info
         tr[u].pos = min(tr[tr[u].lc].pos, tr[tr[u].rc].pos);
         tr[u].cnt = tr[tr[u].lc].cnt + tr[tr[u].rc].cnt;
     }
     int insert(int v, int l, int r, int x, int i) {
         int u = newNode();
         tr[u] = tr[v];
+        // tr[u] <- tr[v] + new info of x
         if (l == r) {
+            // @TODO: add contribute to leaf
             tr[u].pos = i;
             tr[u].cnt += 1;
         } else {
