@@ -9,24 +9,23 @@ struct SAM {
     
     int tot, last;
     SAM() : tot(1), last(1) {}
-    
     void extend(int c) {
-        int p = last, now = last = ++tot;
-        t[now].len = t[p].len + 1;
+        int p = last, np = last = ++tot;
+        t[np].len = t[p].len + 1;
         for (; p && !t[p].ne[c]; p = t[p].link)
-            t[p].ne[c] = now;
+            t[p].ne[c] = np;
         if (!p) {
-            t[now].link = 1;
+            t[np].link = 1;
         } else {
             int q = t[p].ne[c];
             if (t[q].len == t[p].len + 1) {
-                t[now].link = q;
+                t[np].link = q;
             } else {
-                int cur = ++tot;
-                t[cur] = t[q], t[cur].len = t[p].len + 1;
-                t[q].link = t[now].link = cur;
+                int nq = ++tot;
+                t[nq] = t[q], t[nq].len = t[p].len + 1;
+                t[q].link = t[np].link = nq;
                 for (; p && t[p].ne[c] == q; p = t[p].link)
-                    t[p].ne[c] = cur;
+                    t[p].ne[c] = nq;
             }
         }
     }

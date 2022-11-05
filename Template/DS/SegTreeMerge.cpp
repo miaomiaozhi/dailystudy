@@ -1,11 +1,10 @@
 template <class Info>
 struct SegTreeMerge {
-    // assume: interval range : [1, n]
+    // assume: interval range : [1, N]
     int N;
-    vector<int> root;
     vector<Info> tr {{}};   // init all
     SegTreeMerge() = default;
-    SegTreeMerge(int _n, int _N) : N(_N), root(_n + 1) {
+    SegTreeMerge(int _n, int _N) : N(_N) {
         tr.reserve(_n << 6);
     }
     void pushup(int u) {
@@ -62,6 +61,7 @@ struct SegTreeMerge {
     }
     auto solve(int n, vector <vector<pair<int, int>>> &work, vector<vector<int>> &adj) {
         // @TODO: Solve problems
+        vector <int> root(n + 1);
         vector <int> ans(n + 1);
         function <void(int, int)> dfs = [&](int u, int fa) {
             root[u] = newNode(root[u]);

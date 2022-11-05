@@ -6,20 +6,18 @@ struct Treap {
 #define ls tr[u].l
 #define rs tr[u].r
     struct TreapNode {
-        int l, r;
-        int key, val;
+        int l = 0, r = 0;
+        int key = 0, val = 0;
         int siz = 0;
     };
     int n, ptr, root;
     vector <TreapNode> tr;
     vector <int> a;
-
     Treap() : n(0), ptr(0), root(0), a(0) {
         tr.reserve((int) 1E6);
         tr.push_back({0, 0, 0, 0, 0});
     }
     Treap(int _n) : n(_n), ptr(0), tr(_n + 5), a(_n + 5), root(0) {}
-
     void pushup(int u) {
         tr[u].siz = tr[ls].siz + tr[rs].siz + 1;
     }
